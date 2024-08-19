@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodluck/patient/patientListScreen.dart';
+import 'package:goodluck/tarots/screens/tarots.dart';
 
 import 'homeScreen.dart';
 
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(),
-        '/patient-list': (context) => const PatientListPage(),
+        '/tarots-list': (context) => const TarotsListPage(),
       },
     );
   }

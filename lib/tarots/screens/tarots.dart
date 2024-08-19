@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PatientListPage extends StatefulWidget {
-  const PatientListPage({super.key});
+class TarotsListPage extends StatefulWidget {
+  const TarotsListPage({super.key});
 
   @override
-  State<PatientListPage> createState() => _PatientListPageState();
+  State<TarotsListPage> createState() => _TarotsListPageState();
 }
 
-class _PatientListPageState extends State<PatientListPage> {
+class _TarotsListPageState extends State<TarotsListPage> {
   final FocusNode _focusSearch = FocusNode();
   final TextEditingController searchController = TextEditingController();
 

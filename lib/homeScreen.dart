@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodluck/patient/patientListScreen.dart';
+import 'package:goodluck/tarots/screens/tarots.dart';
 import 'package:goodluck/transitionBuilder.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -49,7 +49,7 @@ class MyHomePage extends StatelessWidget {
 Route patientListRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
-        const PatientListPage(),
+        const TarotsListPage(),
     transitionsBuilder: transitionsBuilder,
   );
 }

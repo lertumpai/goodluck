@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goodluck/tarots/data/tarots.dart';
 
+import '../widgets/listTarots.dart';
+
 class TarotsListPage extends StatefulWidget {
   const TarotsListPage({super.key});
 
@@ -9,8 +11,6 @@ class TarotsListPage extends StatefulWidget {
 }
 
 class _TarotsListPageState extends State<TarotsListPage> {
-  final tarots = genListTarots();
-
   @override
   void initState() {
     super.initState();
@@ -25,7 +25,7 @@ class _TarotsListPageState extends State<TarotsListPage> {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Image.asset('assets/tarots/${tarots[0].card}.webp'),
+        child: TarotsListWidget(),
       ),
     );
   }

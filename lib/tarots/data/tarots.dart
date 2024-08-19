@@ -1,6 +1,6 @@
 import 'package:goodluck/tarots/data/major.dart';
 
-class Tarots {
+class Tarot {
   final String card;
   final String nickname;
   final String character;
@@ -11,14 +11,14 @@ class Tarots {
   final String work;
   final String job;
 
-  Tarots(this.card, this.nickname, this.character, this.definition, this.money, this.love, this.health, this.work, this.job);
+  Tarot(this.card, this.nickname, this.character, this.definition, this.money, this.love, this.health, this.work, this.job);
 }
 
-List<Tarots> genListTarots() {
-  List<Tarots> tarots = [];
+List<Tarot> genListTarot() {
+  List<Tarot> tarots = [];
 
   for (var major in listMajor) {
-    tarots.add(Tarots(
+    tarots.add(Tarot(
       major['card'],
       major['nickname'],
       major['character'],

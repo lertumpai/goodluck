@@ -22,7 +22,13 @@ class TarotWidget extends StatelessWidget {
         children: [
           Image.asset('assets/tarots/${tarot.card}.webp'),
           const SizedBox(width: 10,),
-          Text(tarot.card)
+          Expanded(
+            child: Text(
+              tarot.card,
+              style: const TextStyle(fontSize: 12), // Adjust text style if needed
+              overflow: TextOverflow.clip, // Add ellipsis if text overflows
+            ),
+          ),
         ],
       ),
     );
@@ -41,10 +47,10 @@ class TarotsListWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // Number of columns
+          crossAxisCount: 3, // Number of columns
           crossAxisSpacing: 10.0, // Horizontal space between columns
           mainAxisSpacing: 10.0, // Vertical space between rows
-          childAspectRatio: 3 / 2, // Aspect ratio of each item
+          childAspectRatio: 1.2, // Aspect ratio of each item
         ),
         itemCount: listTarot.length, // Number of items
         itemBuilder: (context, index) {

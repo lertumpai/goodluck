@@ -16,7 +16,7 @@ class TarotWidget extends StatelessWidget {
           color: Colors.blue.shade200,
           width: 2,
         ),
-        borderRadius: BorderRadius.circular(8)
+        borderRadius: BorderRadius.circular(6)
       ),
       child: Row(
         children: [

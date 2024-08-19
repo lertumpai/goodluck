@@ -20,7 +20,7 @@ class TarotItemWidget extends StatelessWidget {
         height: 200,
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.blue.shade200,
+            color: Colors.redAccent.shade100,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(6)

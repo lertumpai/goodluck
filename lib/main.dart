@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
       title: 'GoodLuck',
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.teal,
+        colorSchemeSeed: Colors.redAccent,
         appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.teal,
+            backgroundColor: Colors.redAccent,
             iconTheme: IconThemeData(
               color: Colors.white,
             ),

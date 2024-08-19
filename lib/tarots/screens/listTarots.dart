@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goodluck/tarots/data/tarots.dart';
 
 import '../widgets/listTarots.dart';
 

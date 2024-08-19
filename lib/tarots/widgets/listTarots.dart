@@ -4,10 +4,10 @@ import 'package:goodluck/tarots/data/tarots.dart';
 import '../../transitionBuilder.dart';
 import '../screens/tarot.dart';
 
-class TarotWidget extends StatelessWidget {
+class TarotItemWidget extends StatelessWidget {
   final Tarot tarot;
 
-  const TarotWidget({super.key, required this.tarot});
+  const TarotItemWidget({super.key, required this.tarot});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class TarotsListWidget extends StatelessWidget {
         ),
         itemCount: listTarot.length, // Number of items
         itemBuilder: (context, index) {
-          return TarotWidget(tarot: listTarot[index],);
+          return TarotItemWidget(tarot: listTarot[index],);
         },
         padding: const EdgeInsets.all(10.0),
       )

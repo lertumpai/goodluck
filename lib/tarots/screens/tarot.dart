@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodluck/tarots/data/tarots.dart';
 
-import '../widgets/listTarots.dart';
+import '../widgets/tarot.dart';
 
 class TarotPage extends StatelessWidget {
   final Tarot? tarot;
@@ -16,8 +16,8 @@ class TarotPage extends StatelessWidget {
         title: Text(tarot!.card),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: const Text('Tarot'),
+        padding: const EdgeInsets.all(10),
+        child: TarotWidget(tarot: tarot!),
       ),
     );
   }

@@ -9,7 +9,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('App หมูอ้วงบันทึกงาน',
+        title: const Text('GoodLuck',
             style: TextStyle(color: Colors.white)),
       ),
       body: Center(
@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
                               padding: MaterialStatePropertyAll(
                                   EdgeInsets.symmetric(vertical: 18))),
                           child: const Text(
-                            'Patient list',
+                            'Tarots',
                             style: TextStyle(fontSize: 18),
                           )),
                     ),

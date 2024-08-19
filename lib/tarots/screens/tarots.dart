@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodluck/tarots/data/tarots.dart';
 
 class TarotsListPage extends StatefulWidget {
   const TarotsListPage({super.key});
@@ -8,8 +9,7 @@ class TarotsListPage extends StatefulWidget {
 }
 
 class _TarotsListPageState extends State<TarotsListPage> {
-  final FocusNode _focusSearch = FocusNode();
-  final TextEditingController searchController = TextEditingController();
+  final tarots = genListTarots();
 
   @override
   void initState() {
@@ -25,7 +25,7 @@ class _TarotsListPageState extends State<TarotsListPage> {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Image.asset('assets/tarots/FIVE OF CUPS.webp'),
+        child: Image.asset('assets/tarots/${tarots[0].card}.webp'),
       ),
     );
   }

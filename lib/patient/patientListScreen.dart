@@ -21,15 +21,11 @@ class _PatientListPageState extends State<PatientListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('App หมูอ้วงบันทึกงาน'),
+        title: const Text('Tarots'),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: const Column(
-          children: [
-            Text("SCREEN")
-          ],
-        ),
+        child: Image.asset('assets/tarots/FIVE OF CUPS.webp'),
       ),
     );
   }

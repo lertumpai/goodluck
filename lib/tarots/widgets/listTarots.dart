@@ -8,7 +8,24 @@ class TarotWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(tarot.card);
+    return Container(
+      padding: const EdgeInsetsDirectional.all(10),
+      height: 200,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.blue.shade200,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(8)
+      ),
+      child: Row(
+        children: [
+          Image.asset('assets/tarots/${tarot.card}.webp'),
+          const SizedBox(width: 10,),
+          Text(tarot.card)
+        ],
+      ),
+    );
   }
 }
 
@@ -20,16 +37,17 @@ class TarotsListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return ListView.separated(
-      shrinkWrap: true,
-      physics: const AlwaysScrollableScrollPhysics(),
-      itemBuilder: (BuildContext context, int index) {
-        return TarotWidget(tarot: listTarot[index],);
-      },
-      separatorBuilder: (context, i) => const SizedBox(height: 10),
-      itemCount: listTarot.length,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: ListView.separated(
+        shrinkWrap: true,
+        physics: const AlwaysScrollableScrollPhysics(),
+        itemBuilder: (BuildContext context, int index) {
+          return TarotWidget(tarot: listTarot[index],);
+        },
+        separatorBuilder: (context, i) => const SizedBox(height: 10),
+        itemCount: listTarot.length,
+      ),
     );
   }
 }
-
-// Image.asset('assets/tarots/${tarots[0].card}.webp')

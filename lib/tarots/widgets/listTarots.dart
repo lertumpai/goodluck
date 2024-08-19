@@ -39,15 +39,19 @@ class TarotsListWidget extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      child: ListView.separated(
-        shrinkWrap: true,
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemBuilder: (BuildContext context, int index) {
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, // Number of columns
+          crossAxisSpacing: 10.0, // Horizontal space between columns
+          mainAxisSpacing: 10.0, // Vertical space between rows
+          childAspectRatio: 3 / 2, // Aspect ratio of each item
+        ),
+        itemCount: listTarot.length, // Number of items
+        itemBuilder: (context, index) {
           return TarotWidget(tarot: listTarot[index],);
         },
-        separatorBuilder: (context, i) => const SizedBox(height: 10),
-        itemCount: listTarot.length,
-      ),
+        padding: const EdgeInsets.all(10.0),
+      )
     );
   }
 }

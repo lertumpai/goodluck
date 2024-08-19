@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodluck/tarots/screens/tarots.dart';
+import 'package:goodluck/tarots/screens/listTarots.dart';
 import 'package:goodluck/transitionBuilder.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -25,7 +25,7 @@ class MyHomePage extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(vertical: 4),
                       child: FilledButton.tonal(
                           onPressed: () {
-                            Navigator.of(context).push(patientListRoute());
+                            Navigator.of(context).push(tarotListRoute());
                           },
                           style: const ButtonStyle(
                               padding: MaterialStatePropertyAll(
@@ -46,7 +46,7 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-Route patientListRoute() {
+Route tarotListRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
         const TarotsListPage(),

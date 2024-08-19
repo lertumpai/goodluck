@@ -21,7 +21,7 @@ class _TarotsListPageState extends State<TarotsListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tarots'),
+        title: const Text('List Tarot'),
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),

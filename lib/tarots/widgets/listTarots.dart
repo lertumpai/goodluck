@@ -43,29 +43,49 @@ class TarotItemWidget extends StatelessWidget {
   }
 }
 
-class TarotsListWidget extends StatelessWidget {
-  TarotsListWidget({super.key});
+class TarotsListWidget extends StatefulWidget {
+  const TarotsListWidget({super.key});
 
+  @override
+  State<TarotsListWidget> createState() => _TarotsListWidgetState();
+}
+
+class _TarotsListWidgetState extends State<TarotsListWidget> {
   final listTarot = genListTarot();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3, // Number of columns
-          crossAxisSpacing: 10.0, // Horizontal space between columns
-          mainAxisSpacing: 10.0, // Vertical space between rows
-          childAspectRatio: 1.2, // Aspect ratio of each item
+    return Column(
+      children: [
+        const SizedBox(height: 10,),
+        Container(
+          child: TextField(
+            controller: _controller,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Enter your text',
+            ),
+          ),
         ),
-        itemCount: listTarot.length, // Number of items
-        itemBuilder: (context, index) {
-          return TarotItemWidget(tarot: listTarot[index],);
-        },
-        padding: const EdgeInsets.all(10.0),
-      )
+        const SizedBox(height: 10,),
+        Expanded(
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, // Number of columns
+              crossAxisSpacing: 10.0, // Horizontal space between columns
+              mainAxisSpacing: 10.0, // Vertical space between rows
+              childAspectRatio: 1.2, // Aspect ratio of each item
+            ),
+            itemCount: listTarot.length, // Number of items
+            itemBuilder: (context, index) {
+              return TarotItemWidget(tarot: listTarot[index],);
+            },
+          ),
+        ),
+        const SizedBox(height: 10,),
+      ],
     );
   }
 }

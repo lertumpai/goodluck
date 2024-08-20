@@ -13,7 +13,7 @@ class CurvedCardDisplay extends StatefulWidget {
 class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final listTarot = genListTarot();
-  final double radius = 300;
+  final double radius = 350;
 
   @override
   void initState() {

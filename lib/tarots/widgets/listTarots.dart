@@ -55,18 +55,30 @@ class _TarotsListWidgetState extends State<TarotsListWidget> {
   final TextEditingController _controller = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
     return Column(
       children: [
         const SizedBox(height: 10,),
-        Container(
-          child: TextField(
-            controller: _controller,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Enter your text',
-            ),
+        TextField(
+          controller: _controller,
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Enter your text',
           ),
         ),
         const SizedBox(height: 10,),
@@ -78,9 +90,19 @@ class _TarotsListWidgetState extends State<TarotsListWidget> {
               mainAxisSpacing: 10.0, // Vertical space between rows
               childAspectRatio: 1.2, // Aspect ratio of each item
             ),
-            itemCount: listTarot.length, // Number of items
+            itemCount: _controller.text.isEmpty
+                ? listTarot.length
+                : listTarot
+                    .where((tarot) => tarot.card.toUpperCase().contains(_controller.text.toUpperCase(), 0))
+                    .toList().length,
             itemBuilder: (context, index) {
-              return TarotItemWidget(tarot: listTarot[index],);
+              return TarotItemWidget(
+                tarot: _controller.text.isEmpty
+                  ? listTarot[index]
+                  : listTarot
+                      .where((tarot) => tarot.card.toUpperCase().contains(_controller.text.toUpperCase(), 0))
+                      .toList()[index],
+                );
             },
           ),
         ),

@@ -12,7 +12,7 @@ class CurvedCardDisplay extends StatefulWidget {
 
 class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  final listTarot = genListTarot();
+  final listTarot = genListTarotShuffle();
   final double radius = 350;
 
   @override
@@ -75,7 +75,10 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
                       angle: angle - pi / 2,
                       child: Opacity(
                         opacity: animation.value, // Gradually show each card
-                        child: CardWidget(index: index + 1),
+                        child: CardWidget(
+                            index: index + 1,
+                            tarot: listTarot[index],
+                        ),
                       ),
                     ),
                   );
@@ -92,32 +95,42 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
 class CardWidget extends StatelessWidget {
   // todo: add on click
   final int index;
+  final Tarot tarot;
 
-  const CardWidget({super.key, required this.index});
+  const CardWidget({
+    super.key,
+    required this.index,
+    required this.tarot,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 80,
-      height: 120,
-      decoration: BoxDecoration(
-        color: Colors.blueAccent,
-        borderRadius: BorderRadius.circular(8.0),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            offset: Offset(2, 2),
-            blurRadius: 4.0,
-          ),
-        ],
-      ),
-      child: const Center(
-        child: Text(
-          "Tarot",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
+    return InkWell(
+      onTap: () {
+        print(tarot.card);
+      },
+      child: Container(
+        width: 80,
+        height: 120,
+        decoration: BoxDecoration(
+          color: Colors.blueAccent,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(2, 2),
+              blurRadius: 4.0,
+            ),
+          ],
+        ),
+        child: const Center(
+          child: Text(
+            "Tarot",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

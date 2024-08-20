@@ -33,3 +33,9 @@ List<Tarot> genListTarot() {
 
   return tarots;
 }
+
+List<Tarot> genListTarotShuffle() {
+  List<Tarot> tarots = genListTarot();
+  tarots.shuffle();
+  return tarots;
+}

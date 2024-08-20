@@ -24,7 +24,7 @@ class _TarotsListPageState extends State<TarotsListPage> {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: TarotsListWidget(),
+        child: const TarotsListWidget(),
       ),
     );
   }

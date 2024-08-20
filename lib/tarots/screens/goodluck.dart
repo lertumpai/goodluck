@@ -9,8 +9,6 @@ class CurvedCardDisplay extends StatefulWidget {
 
 class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _animation;
-
   final int numCards = 78;
   final double radius = 300;
 
@@ -18,16 +16,9 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 1, milliseconds: 200),
       vsync: this,
-    );
-
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    );
-
-    _controller.forward();
+    )..forward();
   }
 
   @override
@@ -38,28 +29,41 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Center(
       child: Transform.rotate(
-        angle: pi, // Rotate the entire card display by 180 degrees
+        angle: pi,
         child: SizedBox(
           width: double.infinity,
           height: 600,
           child: Stack(
             children: List.generate(numCards, (index) {
-              double angle = (index / numCards) * pi; // Distribute cards along a half-circle
-              double xPos = radius * cos(angle) + MediaQuery.of(context).size.width / 2 - 50;
-              double yPos = radius * sin(angle); // Adjust the vertical position
+              double angle = (index / numCards) * pi; // Final position angle along the curve
+
+              double xPos = radius * cos(angle) + screenWidth / 2 - 50;
+              double yPos = radius * sin(angle);
+
+              // Control the appearance of each card based on the animation progress
+              Animation<double> animation = CurvedAnimation(
+                parent: _controller,
+                curve: Interval(
+                  index / numCards,
+                  (index + 1) / numCards,
+                  curve: Curves.easeInOut,
+                ),
+              );
 
               return AnimatedBuilder(
-                animation: _animation,
+                animation: animation,
                 builder: (context, child) {
                   return Positioned(
                     left: xPos,
                     top: yPos,
                     child: Transform.rotate(
-                      angle: angle - pi / 2, // Rotate each card to align with the curve
+                      angle: angle - pi / 2,
                       child: Opacity(
-                        opacity: _animation.value,
+                        opacity: animation.value, // Gradually show each card
                         child: CardWidget(index: index + 1),
                       ),
                     ),

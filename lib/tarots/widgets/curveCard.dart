@@ -90,6 +90,7 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
 }
 
 class CardWidget extends StatelessWidget {
+  // todo: add on click
   final int index;
 
   const CardWidget({super.key, required this.index});

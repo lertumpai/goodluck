@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goodluck/tarots/screens/goodluck.dart';
 import 'package:goodluck/tarots/screens/listTarots.dart';
 import 'package:goodluck/transitionBuilder.dart';
 
@@ -38,6 +39,26 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ],
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 4),
+                      child: FilledButton.tonal(
+                          onPressed: () {
+                            Navigator.of(context).push(goodLuckRoute());
+                          },
+                          style: const ButtonStyle(
+                              padding: MaterialStatePropertyAll(
+                                  EdgeInsets.symmetric(vertical: 18))),
+                          child: const Text(
+                            'GoodLuck',
+                            style: TextStyle(fontSize: 18),
+                          )),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -50,6 +71,14 @@ Route tarotListRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
         const TarotsListPage(),
+    transitionsBuilder: transitionsBuilder,
+  );
+}
+
+Route goodLuckRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        const GoodLuckPage(),
     transitionsBuilder: transitionsBuilder,
   );
 }

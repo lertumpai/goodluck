@@ -15,11 +15,19 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
   @override
   void initState() {
     super.initState();
+
     _controller = AnimationController(
       duration: const Duration(seconds: 1, milliseconds: 200),
       vsync: this,
-    )..forward();
+    );
+
+    // Adding a delay before starting the animation
+    Future.delayed(const Duration(milliseconds: 350), () {
+      _controller.forward();
+    });
   }
+
+
 
   @override
   void dispose() {

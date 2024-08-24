@@ -29,6 +29,17 @@ List<Tarot> genListTarot() {
       major['work'],
       major['job'],
     ));
+    tarots.add(Tarot(
+      major['card'],
+      major['nickname'],
+      major['character'],
+      major['definition'],
+      major['money'],
+      major['love'],
+      major['health'],
+      major['work'],
+      major['job'],
+    ));
   }
 
   return tarots;

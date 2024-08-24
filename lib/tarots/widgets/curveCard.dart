@@ -14,6 +14,7 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
   late AnimationController _controller;
   final listTarot = genListTarotShuffle();
   final double radius = 350;
+  final double maxSelected = 3;
   Map<int, bool> selectedMapped = {};
 
   @override
@@ -32,10 +33,15 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
   }
 
   onSelect(int index) {
+    int countSelectedTrue = selectedMapped.values.where((value) => value == true).length;
+
     setState(() {
       if (selectedMapped[index] == true) {
         selectedMapped[index] = false;
       } else {
+        if (countSelectedTrue == maxSelected) {
+          return ;
+        }
         selectedMapped[index] = true;
       }
     });

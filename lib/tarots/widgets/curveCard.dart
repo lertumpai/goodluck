@@ -14,6 +14,7 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
   late AnimationController _controller;
   final listTarot = genListTarotShuffle();
   final double radius = 350;
+  Map<int, bool> selectedMapped = {};
 
   @override
   void initState() {
@@ -30,7 +31,15 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
     });
   }
 
-
+  onSelect(int index) {
+    setState(() {
+      if (selectedMapped[index] == true) {
+        selectedMapped[index] = false;
+      } else {
+        selectedMapped[index] = true;
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -76,8 +85,10 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
                       child: Opacity(
                         opacity: animation.value, // Gradually show each card
                         child: CardWidget(
-                            index: index + 1,
+                            index: index,
                             tarot: listTarot[index],
+                            isSelected: selectedMapped[index] ?? false,
+                            onSelect: onSelect,
                         ),
                       ),
                     ),
@@ -93,27 +104,30 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
 }
 
 class CardWidget extends StatelessWidget {
-  // todo: add on click
   final int index;
   final Tarot tarot;
+  final bool isSelected;
+  final Function onSelect;
 
   const CardWidget({
     super.key,
     required this.index,
     required this.tarot,
+    required this.isSelected,
+    required this.onSelect,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print(tarot.card);
+        onSelect(index);
       },
       child: Container(
         width: 80,
         height: 120,
         decoration: BoxDecoration(
-          color: Colors.blueAccent,
+          color: isSelected ? Colors.redAccent : Colors.blueAccent,
           borderRadius: BorderRadius.circular(8.0),
           boxShadow: const [
             BoxShadow(

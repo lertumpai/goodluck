@@ -22,6 +22,7 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
   final double radius = 330;
   late double maxSelected = 0;
   Map<int, bool> selectedMapped = {};
+  List<int> orderSelected = [];
 
   @override
   void initState() {
@@ -50,12 +51,18 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
 
     setState(() {
       if (selectedMapped[index] == true) {
+        final selectedIndex = orderSelected.indexWhere((element) => element == index);
+        if (selectedIndex + 1 != orderSelected.length) {
+          return;
+        }
         selectedMapped[index] = false;
+        orderSelected.removeWhere((element) => element == index);
       } else {
         if (countSelectedTrue == maxSelected) {
           return ;
         }
         selectedMapped[index] = true;
+        orderSelected.add(index);
       }
     });
   }
@@ -108,6 +115,7 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
                               opacity: animation.value, // Gradually show each card
                               child: CardWidget(
                                   index: index,
+                                  order: orderSelected.indexWhere((element) => element == index) + 1,
                                   tarot: listTarot[index],
                                   isSelected: selectedMapped[index] ?? false,
                                   onSelect: onSelect,
@@ -125,8 +133,7 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
         ),
         FilledButton.tonal(
             onPressed: () {
-              List<Tarot> listSelectedTarot = selectedMapped
-                  .keys
+              List<Tarot> listSelectedTarot = orderSelected
                   .map((selected) => listTarot[selected])
                   .toList();
               switch (widget.goodLuckModeEnum) {
@@ -150,6 +157,7 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
 
 class CardWidget extends StatelessWidget {
   final int index;
+  final int order;
   final Tarot tarot;
   final bool isSelected;
   final Function onSelect;
@@ -157,6 +165,7 @@ class CardWidget extends StatelessWidget {
   const CardWidget({
     super.key,
     required this.index,
+    required this.order,
     required this.tarot,
     required this.isSelected,
     required this.onSelect,
@@ -182,10 +191,10 @@ class CardWidget extends StatelessWidget {
             ),
           ],
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            "Tarot",
-            style: TextStyle(
+            'Tarot $order',
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 18.0,
               fontWeight: FontWeight.bold,

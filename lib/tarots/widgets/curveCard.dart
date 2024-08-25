@@ -2,12 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:goodluck/tarots/data/tarots.dart';
+import 'package:goodluck/tarots/screens/mode.dart';
 import 'package:goodluck/tarots/screens/show_3_cards.dart';
 
 import '../../transitionBuilder.dart';
 
 class CurvedCardDisplay extends StatefulWidget {
-  const CurvedCardDisplay({super.key, });
+  final GoodLuckModeEnum goodLuckModeEnum;
+
+  const CurvedCardDisplay({super.key, required this.goodLuckModeEnum});
 
   @override
   _CurvedCardDisplayState createState() => _CurvedCardDisplayState();
@@ -17,7 +20,7 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
   late AnimationController _controller;
   final listTarot = genListTarotShuffle();
   final double radius = 330;
-  final double maxSelected = 3;
+  late double maxSelected = 0;
   Map<int, bool> selectedMapped = {};
 
   @override
@@ -33,6 +36,13 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
     Future.delayed(const Duration(milliseconds: 350), () {
       _controller.forward();
     });
+
+    switch (widget.goodLuckModeEnum) {
+      case GoodLuckModeEnum.show3Cards:
+        maxSelected = 3;
+      case GoodLuckModeEnum.celticCross:
+        maxSelected = 10;
+    }
   }
 
   onSelect(int index) {
@@ -119,7 +129,12 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
                   .keys
                   .map((selected) => listTarot[selected])
                   .toList();
-              Navigator.of(context).push(showGoodLuckRoute(listSelectedTarot));
+              switch (widget.goodLuckModeEnum) {
+                case GoodLuckModeEnum.show3Cards:
+                  Navigator.of(context).push(showGoodLuckRoute(listSelectedTarot));
+                case GoodLuckModeEnum.celticCross:
+                  Navigator.of(context).push(showGoodLuckRoute(listSelectedTarot));
+              }
             },
             style: const ButtonStyle(
                 padding: MaterialStatePropertyAll(

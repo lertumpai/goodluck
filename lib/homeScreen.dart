@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:goodluck/tarots/screens/celtic_cross.dart';
 import 'package:goodluck/tarots/screens/goodluck.dart';
 import 'package:goodluck/tarots/screens/listTarots.dart';
+import 'package:goodluck/tarots/screens/mode.dart';
 import 'package:goodluck/transitionBuilder.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -52,7 +54,23 @@ class MyHomePage extends StatelessWidget {
                               padding: MaterialStatePropertyAll(
                                   EdgeInsets.symmetric(vertical: 18))),
                           child: const Text(
-                            'GoodLuck',
+                            '3 Cards',
+                            style: TextStyle(fontSize: 18),
+                          )),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 4),
+                      child: FilledButton.tonal(
+                          onPressed: () {
+                            Navigator.of(context).push(celticCrossRoute());
+                          },
+                          style: const ButtonStyle(
+                              padding: MaterialStatePropertyAll(
+                                  EdgeInsets.symmetric(vertical: 18))),
+                          child: const Text(
+                            'Celtic Cross',
                             style: TextStyle(fontSize: 18),
                           )),
                     ),
@@ -78,7 +96,15 @@ Route tarotListRoute() {
 Route goodLuckRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
-        const GoodLuckPage(),
+        const GoodLuckPage(goodLuckModeEnum: GoodLuckModeEnum.show3Cards),
+    transitionsBuilder: transitionsBuilder,
+  );
+}
+
+Route celticCrossRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        const GoodLuckPage(goodLuckModeEnum: GoodLuckModeEnum.celticCross),
     transitionsBuilder: transitionsBuilder,
   );
 }

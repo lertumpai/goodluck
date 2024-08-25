@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:goodluck/tarots/screens/mode.dart';
 import 'package:goodluck/tarots/widgets/curveCard.dart';
 
 class GoodLuckPage extends StatelessWidget {
-  const GoodLuckPage({super.key});
+  final GoodLuckModeEnum goodLuckModeEnum;
+
+  const GoodLuckPage({super.key, required this.goodLuckModeEnum});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class GoodLuckPage extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
-        child: const CurvedCardDisplay(),
+        child: CurvedCardDisplay(goodLuckModeEnum: goodLuckModeEnum),
       ),
     );
   }

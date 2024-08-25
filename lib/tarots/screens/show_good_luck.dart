@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goodluck/tarots/data/tarots.dart';
 import 'package:goodluck/tarots/widgets/curveCard.dart';
+import 'package:goodluck/tarots/widgets/show_good_luck.dart';
 
 class ShowGoodLuckPage extends StatelessWidget {
   final List<Tarot>? listTarot;
@@ -19,7 +20,7 @@ class ShowGoodLuckPage extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
-        child: Text('Show good luck'),
+        child: ShowGoodLuckWidget(listTarot: listTarot ?? []),
       ),
     );
   }

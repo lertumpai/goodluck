@@ -115,7 +115,11 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
         ),
         FilledButton.tonal(
             onPressed: () {
-              Navigator.of(context).push(ShowGoodLuckRoute());
+              List<Tarot> listSelectedTarot = selectedMapped
+                  .keys
+                  .map((selected) => listTarot[selected])
+                  .toList();
+              Navigator.of(context).push(showGoodLuckRoute(listSelectedTarot));
             },
             style: const ButtonStyle(
                 padding: MaterialStatePropertyAll(
@@ -178,10 +182,10 @@ class CardWidget extends StatelessWidget {
   }
 }
 
-Route ShowGoodLuckRoute() {
+Route showGoodLuckRoute(List<Tarot> listSelectedTarot) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
-    const ShowGoodLuckPage(),
+    ShowGoodLuckPage(listTarot: listSelectedTarot),
     transitionsBuilder: transitionsBuilder,
   );
 }

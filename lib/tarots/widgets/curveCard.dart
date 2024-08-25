@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:goodluck/tarots/data/tarots.dart';
-import 'package:goodluck/tarots/screens/show_good_luck.dart';
+import 'package:goodluck/tarots/screens/show_3_cards.dart';
 
 import '../../transitionBuilder.dart';
 
@@ -184,8 +184,7 @@ class CardWidget extends StatelessWidget {
 
 Route showGoodLuckRoute(List<Tarot> listSelectedTarot) {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) =>
-    ShowGoodLuckPage(listTarot: listSelectedTarot),
+    pageBuilder: (context, animation, secondaryAnimation) => Show3CardsPage(listTarot: listSelectedTarot),
     transitionsBuilder: transitionsBuilder,
   );
 }

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:goodluck/tarots/data/tarots.dart';
 import 'package:goodluck/tarots/widgets/tarot.dart';
 
-class ShowGoodLuckWidget extends StatelessWidget {
+class Show3CardsWidget extends StatelessWidget {
   final List<Tarot> listTarot;
 
-  const ShowGoodLuckWidget({super.key, required this.listTarot});
+  const Show3CardsWidget({super.key, required this.listTarot});
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,8 @@
+import 'package:goodluck/tarots/data/cups.dart';
 import 'package:goodluck/tarots/data/major.dart';
+import 'package:goodluck/tarots/data/pentacles.dart';
+import 'package:goodluck/tarots/data/swards.dart';
+import 'package:goodluck/tarots/data/wands.dart';
 
 class Tarot {
   final String card;
@@ -17,17 +21,73 @@ class Tarot {
 List<Tarot> genListTarot() {
   List<Tarot> tarots = [];
 
-  for (var major in listMajor) {
+  for (var card in listMajor) {
     tarots.add(Tarot(
-      major['card'],
-      major['nickname'],
-      major['character'],
-      major['definition'],
-      major['money'],
-      major['love'],
-      major['health'],
-      major['work'],
-      major['job'],
+      card['card'],
+      card['nickname'],
+      card['character'],
+      card['definition'],
+      card['money'],
+      card['love'],
+      card['health'],
+      card['work'],
+      card['job'],
+    ));
+  }
+
+  for (var card in listSward) {
+    tarots.add(Tarot(
+      card['card'],
+      card['nickname'],
+      card['character'],
+      card['definition'],
+      card['money'],
+      card['love'],
+      card['health'],
+      card['work'],
+      card['job'],
+    ));
+  }
+
+  for (var card in listPentacle) {
+    tarots.add(Tarot(
+      card['card'],
+      card['nickname'],
+      card['character'],
+      card['definition'],
+      card['money'],
+      card['love'],
+      card['health'],
+      card['work'],
+      card['job'],
+    ));
+  }
+
+  for (var card in listWand) {
+    tarots.add(Tarot(
+      card['card'],
+      card['nickname'],
+      card['character'],
+      card['definition'],
+      card['money'],
+      card['love'],
+      card['health'],
+      card['work'],
+      card['job'],
+    ));
+  }
+
+  for (var card in listCup) {
+    tarots.add(Tarot(
+      card['card'],
+      card['nickname'],
+      card['character'],
+      card['definition'],
+      card['money'],
+      card['love'],
+      card['health'],
+      card['work'],
+      card['job'],
     ));
   }
 

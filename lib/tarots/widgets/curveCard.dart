@@ -173,35 +173,44 @@ class CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onSelect(index);
-      },
-      child: Container(
-        width: 80,
-        height: 120,
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.redAccent : Colors.blueAccent,
-          borderRadius: BorderRadius.circular(8.0),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(2, 2),
-              blurRadius: 4.0,
+    return Column(
+      children: [
+        InkWell(
+          onTap: () {
+            onSelect(index);
+          },
+          child: Container(
+            width: 80,
+            height: 120,
+            decoration: BoxDecoration(
+              color: isSelected ? Colors.redAccent : Colors.blueAccent,
+              borderRadius: BorderRadius.circular(8.0),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black26,
+                  offset: Offset(2, 2),
+                  blurRadius: 4.0,
+                ),
+              ],
             ),
-          ],
-        ),
-        child: Center(
-          child: Text(
-            'Tarot $order',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18.0,
-              fontWeight: FontWeight.bold,
+            child: const Center(
+              child: Text(
+                'Tarot',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ),
-      ),
+        if (order > 0)
+          Transform.rotate(
+            angle: 3.14159, // 180 degrees in radians (pi radians)
+            child: Text(order.toString()),
+          )
+      ],
     );
   }
 }

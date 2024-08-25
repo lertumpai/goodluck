@@ -174,6 +174,7 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         InkWell(
           onTap: () {
@@ -194,22 +195,17 @@ class CardWidget extends StatelessWidget {
               ],
             ),
             child: const Center(
-              child: Text(
-                'Tarot',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: Text(''),
             ),
           ),
         ),
-        if (order > 0)
-          Transform.rotate(
+        Padding(
+          padding: const EdgeInsets.only(right: 8),
+          child: Transform.rotate(
             angle: 3.14159, // 180 degrees in radians (pi radians)
-            child: Text(order.toString()),
-          )
+            child: Text(order > 0 ? order.toString() : ''),
+          ),
+        )
       ],
     );
   }

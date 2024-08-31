@@ -54,9 +54,9 @@ class TarotWidget extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(10),
             children: <Widget>[
-              TarotDetail(title: 'Character', detail: tarot.sign),
+              TarotDetail(title: 'Sign', detail: tarot.sign),
               const SizedBox(height: 10),
-              TarotDetail(title: 'Character', detail: tarot.keyword),
+              TarotDetail(title: 'Keyword', detail: tarot.keyword),
               const SizedBox(height: 10),
               TarotDetail(title: 'Definition', detail: tarot.definition),
               const SizedBox(height: 10),

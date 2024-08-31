@@ -7,7 +7,8 @@ import 'package:goodluck/tarots/data/wands.dart';
 class Tarot {
   final String card;
   final String nickname;
-  final String character;
+  final String sign;
+  final String keyword;
   final String definition;
   final String money;
   final String love;
@@ -15,7 +16,7 @@ class Tarot {
   final String work;
   final String job;
 
-  Tarot(this.card, this.nickname, this.character, this.definition, this.money, this.love, this.health, this.work, this.job);
+  Tarot(this.card, this.nickname, this.sign, this.keyword, this.definition, this.money, this.love, this.health, this.work, this.job);
 }
 
 List<Tarot> genListTarot() {
@@ -25,7 +26,8 @@ List<Tarot> genListTarot() {
     tarots.add(Tarot(
       card['card'],
       card['nickname'],
-      card['character'],
+      card['sign'],
+      card['keyword'],
       card['definition'],
       card['money'],
       card['love'],
@@ -39,7 +41,8 @@ List<Tarot> genListTarot() {
     tarots.add(Tarot(
       card['card'],
       card['nickname'],
-      card['character'],
+      card['sign'],
+      card['keyword'],
       card['definition'],
       card['money'],
       card['love'],
@@ -53,7 +56,8 @@ List<Tarot> genListTarot() {
     tarots.add(Tarot(
       card['card'],
       card['nickname'],
-      card['character'],
+      card['sign'],
+      card['keyword'],
       card['definition'],
       card['money'],
       card['love'],
@@ -67,7 +71,8 @@ List<Tarot> genListTarot() {
     tarots.add(Tarot(
       card['card'],
       card['nickname'],
-      card['character'],
+      card['sign'],
+      card['keyword'],
       card['definition'],
       card['money'],
       card['love'],
@@ -81,7 +86,8 @@ List<Tarot> genListTarot() {
     tarots.add(Tarot(
       card['card'],
       card['nickname'],
-      card['character'],
+      card['sign'],
+      card['keyword'],
       card['definition'],
       card['money'],
       card['love'],

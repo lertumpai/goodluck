@@ -9,26 +9,47 @@ class TarotDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Split the detail string by newline character
+    final List<String> detailLines = detail.split('\n');
+
     return Container(
       padding: const EdgeInsetsDirectional.all(10),
       decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.redAccent.shade100,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(6)
+        border: Border.all(
+          color: Colors.redAccent.shade100,
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(6),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-              title,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            title,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          Text(detail)
+          const SizedBox(height: 10),
+          ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: detailLines.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return const Divider(
+                color: Colors.black38,
+              );
+            },
+            itemBuilder: (BuildContext context, int index) {
+              return Text(
+                detailLines[index].replaceFirst('- ', ''),
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

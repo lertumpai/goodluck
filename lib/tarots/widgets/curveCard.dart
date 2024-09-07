@@ -19,7 +19,7 @@ class CurvedCardDisplay extends StatefulWidget {
 class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   final listTarot = genListTarotShuffle();
-  final double radius = 330;
+  // final double radius = 330;
   late double maxSelected = 0;
   Map<int, bool> selectedMapped = {};
   List<int> orderSelected = [];
@@ -76,6 +76,8 @@ class _CurvedCardDisplayState extends State<CurvedCardDisplay> with SingleTicker
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    print('screenWidth: $screenWidth');
+    double radius = (screenWidth / 2) * 0.75;
 
     return Column(
       children: [

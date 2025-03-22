@@ -1,0 +1,4 @@
+#Sat Mar 22 15:20:06 GMT+07:00 2025
+base.0=/Users/sorawitlertumpaisakulwong/Desktop/goodluck/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
